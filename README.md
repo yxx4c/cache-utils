@@ -52,8 +52,8 @@ prismaWithUncache.user.update({
   uncache: {
     uncacheKeys: [
       getCacheId([{ prisma: 'User' }, { userId: id }]),
-      getCacheIdPattern([{ prisma: '*' }, { userId: id }]), // Pattern matching under a specific key
-      getCacheIdPattern([{ prisma: 'Post' }, { userId: id }, { glob: '*' }]), // Utilizing the key 'glob' to create a wildcard region
+      getCacheIdPattern([{ prisma: '*' }, { userId: id }]), // Pattern matching under a specific key, eg: prisma:*:userId:1234
+      getCacheIdPattern([{ prisma: 'Post' }, { userId: id }, { glob: '*' }]), // Utilizing the key 'glob' to create a wildcard region, eg: prisma:post:userId:1234:*
     ],
     hasPattern: true,
   },
