@@ -1,6 +1,6 @@
 # cache-utils
 
-`cache-utils` is a versatile library designed to complement the [prisma-redis-cache](../../prisma-redis-cache) and [prisma-redis-uncache](../../prisma-redis-uncache) libraries. It offers general-purpose functions for efficient Redis/DragonflyDB database maintenance.
+`cache-utils` is a versatile library designed to complement the [prisma-redis-cache](../../../prisma-redis-cache) and [prisma-redis-uncache](../../../prisma-redis-uncache) libraries. It offers general-purpose functions for efficient Redis/DragonflyDB database maintenance.
 
 🚀 If `cache-utils` proves helpful, consider giving it a star! [⭐ Star Me!](https://github.com/yxx4c/cache-utils)
 
