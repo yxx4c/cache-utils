@@ -1,0 +1,116 @@
+{
+  "name": "@yxx4c/cache-utils",
+  "version": "0.0.1",
+  "description": "Simple JavaScript utility for straightforward cache management.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yxx4c/cache-utils.git"
+  },
+  "homepage": "https://github.com/yxx4c/cache-utils",
+  "bugs": "https://github.com/yxx4c/cache-utils/issues",
+  "author": {
+    "name": "caxxy",
+    "email": "mail.yxx4c+npm@gmail.com",
+    "url": "https://github.com/yxx4c"
+  },
+  "keywords": [
+    "utility",
+    "prisma",
+    "extension",
+    "redis",
+    "dragonflydb",
+    "cache",
+    "uncache"
+  ],
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {}
+  },
+  "files": [
+    "dist/**/*",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "format": "prettier --write .",
+    "semantic-release": "semantic-release",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.202",
+    "@types/node": "^20.10.6",
+    "conventional-changelog-conventionalcommits": "^7.0.2",
+    "prettier": "^3.1.1",
+    "semantic-release": "^22.0.12",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "conventionalcommits",
+          "releaseRules": [
+            {
+              "type": "build",
+              "scope": "deps",
+              "release": "patch"
+            }
+          ]
+        }
+      ],
+      [
+        "@semantic-release/release-notes-generator",
+        {
+          "preset": "conventionalcommits",
+          "presetConfig": {
+            "types": [
+              {
+                "type": "feat",
+                "section": "Features"
+              },
+              {
+                "type": "fix",
+                "section": "Bug Fixes"
+              },
+              {
+                "type": "docs",
+                "section": "Documentation Changes"
+              },
+              {
+                "type": "build",
+                "section": "Dependencies and Other Build Updates",
+                "hidden": false
+              }
+            ]
+          }
+        }
+      ],
+      "@semantic-release/npm",
+      "@semantic-release/github"
+    ]
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
