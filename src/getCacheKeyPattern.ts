@@ -1,11 +1,8 @@
 import {camelCase} from 'lodash';
 
-export type CacheIdPatternParams = {[key: string]: string}[];
+export type CacheKeyPatternParams = {[key: string]: string}[];
 
-/**
- * @deprecated Use getCacheKeyPattern() instead.
- */
-export const getCacheIdPattern = (params: CacheIdPatternParams) =>
+export const getCacheKeyPattern = (params: CacheKeyPatternParams) =>
   params
     .map(obj =>
       Object.entries(obj).map(([key, value]) =>
@@ -15,4 +12,4 @@ export const getCacheIdPattern = (params: CacheIdPatternParams) =>
     .join(':');
 
 
-export default getCacheIdPattern
+export default getCacheKeyPattern

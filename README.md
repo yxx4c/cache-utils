@@ -33,14 +33,14 @@ bun add @yxx4c/cache-utils
 ## Example
 
 ```javascript
-import { getCacheId, getCacheIdPattern } from '@yxx4c/cache-utils';
+import { getCacheKey, getCacheKeyPattern } from '@yxx4c/cache-utils';
 
 // ...Extend Prisma with prisma-redis-cache
 
 // Query a user and cache the result with custom configuration
 prismaWithCache.user.findUnique({
   where: { id },
-  cache: { ttl: 5, key: getCacheId([{ prisma: 'User' }, { userId: id }]) },
+  cache: { ttl: 5, key: getCacheKey([{ prisma: 'User' }, { userId: id }]) },
 });
 
 // ...Extend Prisma with prisma-redis-uncache
@@ -51,9 +51,9 @@ prismaWithUncache.user.update({
   data: { username },
   uncache: {
     uncacheKeys: [
-      getCacheId([{ prisma: 'User' }, { userId: id }]),
-      getCacheIdPattern([{ prisma: '*' }, { userId: id }]), // Pattern matching under a specific key, eg: prisma:*:userId:1234
-      getCacheIdPattern([{ prisma: 'Post' }, { userId: id }, { glob: '*' }]), // Utilizing the key 'glob' to create a wildcard region, eg: prisma:post:userId:1234:*
+      getCacheKey([{ prisma: 'User' }, { userId: id }]),
+      getCacheKeyPattern([{ prisma: '*' }, { userId: id }]), // Pattern matching under a specific key, eg: prisma:*:userId:1234
+      getCacheKeyPattern([{ prisma: 'Post' }, { userId: id }, { glob: '*' }]), // Utilizing the key 'glob' to create a wildcard region, eg: prisma:post:userId:1234:*
     ],
     hasPattern: true,
   },
