@@ -1,8 +1,22 @@
-import {camelCase} from 'lodash';
+import { CacheKeyParams } from "./types";
+import { CacheCase, caseMap } from "./utils";
 
-export type CacheKeyParams = {[key: string]: string}[];
+export const getCacheKey = (
+  params: CacheKeyParams,
+  delimiter = ":",
+  cacheCase: CacheCase = CacheCase.CAMEL_CASE
+) =>
+  params
+    .map((obj) =>
+      Object.entries(obj)
+        .map(
+          ([key, value]) =>
+            `${caseMap[cacheCase](key)}:${caseMap[cacheCase](
+              value
+            )}`
+        )
+        .join(delimiter)
+    )
+    .join(delimiter);
 
-const getCacheKey = (params: CacheKeyParams) =>
-  params.map(obj => Object.entries(obj).map(([key, value]) => `${camelCase(key)}:${camelCase(value)}`)).join(':');
-
-export default getCacheKey
+export default getCacheKey;
