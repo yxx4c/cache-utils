@@ -1,6 +1,4 @@
-import getCacheId from './getCacheId';
-import getCacheIdPattern from './getCacheIdPattern';
-import getCacheKey from './getCacheKey';
-import getCacheKeyPattern from './getCacheKeyPattern';
-
-export {getCacheId, getCacheIdPattern, getCacheKey, getCacheKeyPattern};
+export { getCacheKey } from "./getCacheKey";
+export { getCacheKeyPattern } from "./getCacheKeyPattern";
+export { CacheKeyParams, CacheKeyPatternParams } from "./types";
+export { CacheCase, caseMap } from "./utils";
