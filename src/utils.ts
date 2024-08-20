@@ -1,4 +1,4 @@
-import { camelCase, kebabCase, snakeCase, startCase } from "lodash";
+import { camelCase, kebabCase, snakeCase, startCase } from "lodash-es";
 
 export enum CacheCase {
   CAMEL_CASE = "camelCase",
