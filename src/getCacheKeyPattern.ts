@@ -1,4 +1,4 @@
-import { CacheKeyPatternParams } from "./types";
+import type { CacheKeyPatternParams } from "./types";
 import { CacheCase, caseMap } from "./utils";
 
 const globCheckRegex = /[*?]/;
@@ -8,7 +8,7 @@ const globCheck = (s: string) => globCheckRegex.test(s);
 export const getCacheKeyPattern = (
   params: CacheKeyPatternParams,
   delimiter = ":",
-  cacheCase: CacheCase = CacheCase.CAMEL_CASE
+  cacheCase: CacheCase = CacheCase.CAMEL_CASE,
 ) =>
   params
     .map((obj) =>
@@ -16,9 +16,7 @@ export const getCacheKeyPattern = (
         .map(([key, value]) => {
           if (key.toLowerCase() === "glob") return value;
 
-          const formattedKey = globCheck(key)
-            ? key
-            : caseMap[cacheCase](key);
+          const formattedKey = globCheck(key) ? key : caseMap[cacheCase](key);
 
           const formattedValue = globCheck(value)
             ? value
@@ -26,7 +24,7 @@ export const getCacheKeyPattern = (
 
           return `${formattedKey}:${formattedValue}`;
         })
-        .join(delimiter)
+        .join(delimiter),
     )
     .join(delimiter);
 
